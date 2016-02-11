@@ -1,1 +1,23 @@
 template(name='Home')
+  header
+    h1.ui.teal.header Library Dashboard
+  .ui.middle.aligned
+    .column
+      h2.ui.teal.header
+        .content Please, sign in:
+    form.ui.large.form
+      .ui.stacked.segment
+        .field
+          .ui.left.icon.input
+            i.user.icon
+            input(type='text' name='email' placeholder='E-mail address')
+        .field
+          .ui.left.icon.input
+            i.lock.icon
+            input(type='password' name='password' placeholder='Password')
+        .ui.fluid.large.teal.submit.button Sign In
+
+        .ui.error.message
+
+    .ui.message Have an Access Code?
+      a(href="#") Register

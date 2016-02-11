@@ -19,8 +19,10 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 aldeed:collection2
 aldeed:autoform
 alethes:pages
+flemay:less-autoprefixer
 fortawesome:fontawesome
-fourseven:scss
+iron:router
 mquandalle:jade
 sacha:spin
+semantic:ui
 twbs:bootstrap
