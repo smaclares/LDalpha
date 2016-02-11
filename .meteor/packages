@@ -21,6 +21,7 @@ aldeed:autoform
 alethes:pages
 fortawesome:fontawesome
 fourseven:scss
+iron:router
 mquandalle:jade
 sacha:spin
 twbs:bootstrap
