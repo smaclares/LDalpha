@@ -1,5 +1,46 @@
 template(name='Dashboard')
-  .nav
-    .ui.borderless.main.menu
-      .ui.text.container
-        a(href-"#")
+
+      .ui.menu#dashboard-nav
+        .left.header.white.item Palm Beach State College | Lake Worth Library
+        .right
+          .ui.basic.blue.button#notifications Notfications
+          .ui.basic.blue.button#users Users
+          .ui.basic.blue.button#log-out Log Out
+
+      .ui.secondary.pointing.menu
+          .ui.item.right.floated
+            .user-links
+              a#your-account Your Account
+              a#help Help
+
+      section.ui.segment#book-gallery
+        .ui.search#search
+          .ui.icon.input
+            input.prompt(placeholder='Search by OCLC' type='text')
+            i.search.icon
+          hr
+          .ui.items
+            .ui.item
+              .image
+              .content
+                +pages
+                +pagesNav
+                .ui.basic.teal.button.right.floated#add-to-bookshelf + Add to Bookshelf
+                br
+                br
+                hr
+                .ui.basic.blue.button.right.floated#view-bookshelf View Bookshelf
+                .ui.basic.blue.button.right.floated#download-bookshelf Download Bookshelf
+
+      section.ui.segment#add-new-books
+        p Submit List from FLVC Here:
+        hr
+        textarea(cols='45')#sysnums-submissions
+        br
+        br
+        .ui.basic.blue.button#submit-sysnums Submit
+        .ui.button#clear-sysnums Clear
+
+      +ViewBookshelf
+      +Account
+      +Notifications
