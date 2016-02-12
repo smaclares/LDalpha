@@ -1,0 +1,17 @@
+template(name='RegisterModal')
+  .ui.small.modal#register-modal
+    i.close.icon#close
+    .ui.middle.aligned.center.aligned.grid
+      .column
+        h2#register-subtitle Register:
+        hr
+        .content
+            form.ui.large.form
+              .ui.stacked.segment
+                .field
+                  input(type='text' name='registration-code' placeholder='Access Code')
+                .field
+                  input(type='text' name='email' placeholder='Your Email Address')
+                .field
+                  input(type='password' name='password' placeholder='Password')
+                .ui.fluid.large.teal.submit.button#complete-register Complete Registration
