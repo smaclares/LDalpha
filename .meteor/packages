@@ -23,6 +23,7 @@ alethes:pages
 coffeescript
 flemay:less-autoprefixer
 fortawesome:fontawesome
+http
 iron:router
 mquandalle:jade
 sacha:spin

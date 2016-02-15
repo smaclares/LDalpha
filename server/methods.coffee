@@ -25,37 +25,37 @@ Meteor.methods
               data[i] = data[i].trim()
             i++
 
-      flccrem = data.indexOf('ccla_aleph')
-      data.splice flccrem, 5
+          flccrem = data.indexOf('ccla_aleph')
+          data.splice flccrem, 5
 
-      oclc = sysnums[index]
-      title = data[0]
-      author = data[1]
-      extendedAuthor = data[2]
-      edition = data[3]
-      publisher = data[4]
-      year = data[5]
-      pages = data[6]
-      subjects = data[7]
-      description = data[8]
-      extendedDescription = data[9]
+          oclc = sysnums[index]
+          title = data[0]
+          author = data[1]
+          extendedAuthor = data[2]
+          edition = data[3]
+          publisher = data[4]
+          year = data[5]
+          pages = data[6]
+          subjects = data[7]
+          description = data[8]
+          extendedDescription = data[9]
 
-      Books.insert
-        oclc: oclc
-        title: title
-        author: author
-        extauthor: extendedAuthor
-        edition: edition
-        publisher: publisher
-        year: year
-        pages: pages
-        subjects: subjects
-        description: description
-        extdescription: extendedDescription
+          Books.insert
+            oclc: oclc
+            title: title
+            author: author
+            extauthor: extendedAuthor
+            edition: edition
+            publisher: publisher
+            year: year
+            pages: pages
+            subjects: subjects
+            description: description
+            extdescription: extendedDescription
 
-      return
-    return
-    
+          return
+        return
+
     "deleteUser": (userId) ->
 
     "getBookImage": (title) ->
