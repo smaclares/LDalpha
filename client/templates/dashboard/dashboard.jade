@@ -23,18 +23,13 @@ template(name='Dashboard')
             .ui.item
               .image
               .content
-                +pages
-                +pagesNav
+                +NewBooks
                 .ui.basic.teal.button.right.floated#add-to-bookshelf + Add to Bookshelf
                 br
                 br
                 hr
                 .ui.basic.blue.button.right.floated#view-bookshelf View Bookshelf
                 .ui.basic.blue.button.right.floated#download-bookshelf Download Bookshelf
-
-                ui.success.message.hidden#success
-                  i.close.icon
-                  p#success-message
 
       section.ui.segment#add-new-books
         p Submit List from FLVC Here:
@@ -48,3 +43,8 @@ template(name='Dashboard')
       +ViewBookshelf
       +Account
       +Notifications
+
+template(name='NewBooks')
+  h4 New books
+  +pages
+  +pagesNav

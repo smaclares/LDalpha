@@ -6,7 +6,6 @@ Meteor.methods
 
     _.map sysnums, (num) ->
       url = 'http://discover.linccweb.org/PrimoWebServices/' + 'xservice/search/full?institution=FLCC1900&docId=ccla_aleph' + num
-      console.log(url)
       urls.push url
       return
 
@@ -19,7 +18,6 @@ Meteor.methods
 
           data = results.content.replace(/<\/?[^>]+>/gi, '').split('\n')
           data = data.slice(18, 38)
-          console.log data
 
           i = 0
           while i < data.length

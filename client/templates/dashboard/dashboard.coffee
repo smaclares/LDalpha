@@ -1,9 +1,3 @@
-Template.Dashboard.onCreated ->
-  @subscribe 'books'
-  @subscribe 'bookshelf'
-  @subscribe 'notifications'
-  @subscribe 'users'
-
 Template.Dashboard.events
 
   "click #notifications": () ->
@@ -27,16 +21,13 @@ Template.Dashboard.events
 
   "click #submit-sysnums": () ->
     sysnums = $('#sysnums-submissions').val().trim().split('\n')
-    console.log(sysnums)
 
-    Meteor.call 'addNewBooks', sysnums, (error, response) ->
+    Meteor.call 'addNewBooks', sysnums, (error) ->
       if error
-        alert 'Could not download books!'
-      else
-        $('#sucess').toggleClass('hidden')
-        $('#success').text(sysnums.length + ' books have been uploaded!')
-        $('#input-sys-nums').val('')
+        alert 'System numbers could not be processed!'
       return
+
+    $('#sysnums-submissions').val ''
 
   "click #clear-sysnums": () ->
     $('#sysnums-submissions').val('')
