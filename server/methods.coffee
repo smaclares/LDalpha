@@ -1,12 +1,15 @@
 Meteor.methods
 
-  "addNewBooks": (sysnums) ->
+  'addNewBooks': (sysnums) ->
 
     urls = []
+
     _.map sysnums, (num) ->
       url = 'http://discover.linccweb.org/PrimoWebServices/' + 'xservice/search/full?institution=FLCC1900&docId=ccla_aleph' + num
+      console.log(url)
       urls.push url
       return
+
     _.map urls, (url, index) ->
       HTTP.call 'GET', url, (error, results) ->
 
@@ -16,6 +19,8 @@ Meteor.methods
 
           data = results.content.replace(/<\/?[^>]+>/gi, '').split('\n')
           data = data.slice(18, 38)
+          console.log data
+
           i = 0
           while i < data.length
             if data[i].indexOf('$') > -1
@@ -52,14 +57,14 @@ Meteor.methods
             subjects: subjects
             description: description
             extdescription: extendedDescription
-
-          return
         return
+      return
+    return
 
-    "deleteUser": (userId) ->
+    'deleteUser': (userId) ->
 
-    "getBookImage": (title) ->
+    'getBookImage': (title) ->
 
-    "inviteUser": (email) ->
+    'inviteUser': (email) ->
 
-    "removeFromBookshelf" : (title) ->
+    'removeFromBookshelf' : (title) ->

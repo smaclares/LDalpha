@@ -27,6 +27,7 @@ Template.Dashboard.events
 
   "click #submit-sysnums": () ->
     sysnums = $('#sysnums-submissions').val().trim().split('\n')
+    console.log(sysnums)
 
     Meteor.call 'addNewBooks', sysnums, (error, response) ->
       if error
