@@ -4,6 +4,22 @@ Template.Dashboard.onCreated ->
   @subscribe 'notifications'
   @subscribe 'users'
 
+Template.Dashboard.onRendered ->
+
+  if Books
+    Books.find({}).map (book) ->
+      console.log book.title
+      return
+
+
+  $('.page').pagination
+    items: ->
+      Books.find({}).count()
+    itemsOnPage: 1
+
+
+  Session.setDefault 'pageNumber', 1
+
 Template.Dashboard.events
 
   "click #notifications": () ->
@@ -33,10 +49,13 @@ Template.Dashboard.events
       if error
         alert 'Could not download books!'
       else
-        $('#sucess').toggleClass('hidden')
-        $('#success').text(sysnums.length + ' books have been uploaded!')
-        $('#input-sys-nums').val('')
+        alert(sysnums.length + ' books have been uploaded!')
+        $('#sysnums-submissions').val('')
       return
 
   "click #clear-sysnums": () ->
     $('#sysnums-submissions').val('')
+
+  "click .next": () ->
+
+  "click .prev": () ->

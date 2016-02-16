@@ -1,6 +1,9 @@
-Router.map ->
-  @route 'Home',
-    path: '/'
-    waitOn: ->
-      Meteor.subscribe 'users'
-  @route 'Dashboard', path: '/dashboard'
+Router.configure layoutTemplate: 'Main'
+
+Router.route '/', ->
+  @render 'Home'
+  return
+
+Router.route '/dashboard', ->
+  @render 'Dashboard'
+  return
