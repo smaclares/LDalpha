@@ -23,8 +23,16 @@ template(name='Dashboard')
             .ui.item
               .image
               .content
-                #{book}
-                .page
+                p OCLC #: #{oclc}
+                p Title: #{title}
+                p Author: #{author}
+                p Description: #{description}
+                .ui.basic.teal.button.right.floated#next
+                    i.fa.fa-chevron-right
+                .ui.basic.teal.button.right.floated#prev
+                  i.fa.fa-chevron-left
+                br
+                br
                 .ui.basic.teal.button.right.floated#add-to-bookshelf + Add to Bookshelf
                 br
                 br

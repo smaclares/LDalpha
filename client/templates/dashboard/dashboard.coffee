@@ -4,21 +4,32 @@ Template.Dashboard.onCreated ->
   @subscribe 'notifications'
   @subscribe 'users'
 
+getBookInfo = (pgNum) ->
+  newBooks = Books.find({})
+  newBooks.forEach (book, index) ->
+    if index == pgNum
+      Session.set 'oclc', book.oclc
+      Session.set 'title', book.title
+      Session.set 'author', book.author
+    return
+  return
+
+
 Template.Dashboard.onRendered ->
 
-  if Books
-    Books.find({}).map (book) ->
-      console.log book.title
-      return
+  @autorun ->
+    getBookInfo 0
 
+Template.Dashboard.helpers
 
-  $('.page').pagination
-    items: ->
-      Books.find({}).count()
-    itemsOnPage: 1
+  "oclc": () ->
+    return Session.get('oclc')
 
+  "title": () ->
+    return Session.get('title')
 
-  Session.setDefault 'pageNumber', 1
+  "author": () ->
+    return Session.get('author')
 
 Template.Dashboard.events
 
@@ -37,13 +48,16 @@ Template.Dashboard.events
   "click #add-to-bookshelf": () ->
 
   "click #download-bookshelf": () ->
+      newBooks = Books.find({})
+      newBooks.forEach (book) ->
+        console.log book.title
+        return
 
   "click #view-bookshelf": () ->
     $('#view-bookshelf-modal').modal('show')
 
   "click #submit-sysnums": () ->
     sysnums = $('#sysnums-submissions').val().trim().split('\n')
-    console.log(sysnums)
 
     Meteor.call 'addNewBooks', sysnums, (error, response) ->
       if error
@@ -55,7 +69,3 @@ Template.Dashboard.events
 
   "click #clear-sysnums": () ->
     $('#sysnums-submissions').val('')
-
-  "click .next": () ->
-
-  "click .prev": () ->
