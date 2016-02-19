@@ -42,6 +42,16 @@ Meteor.methods
           subjects = data[7]
           description = data[8]
           extendedDescription = data[9]
+          imgurl = (title) ->
+            title = title.replace(/\s+/g, '+')
+            cheerio = Meteor.npmRequire('cheerio')
+            url = 'http://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=' + title
+            result = Meteor.http.get(url)
+            $ = cheerio.load(result.content)
+            imgsrc = $('.s-access-image.cfMarker').attr('src')
+            return imgsrc
+          console.log imgurl
+
 
           Books.insert
             oclc: oclc
@@ -55,6 +65,7 @@ Meteor.methods
             subjects: subjects
             description: description
             extdescription: extendedDescription
+            imgurl: imgurl
         return
       return
     return
@@ -77,25 +88,6 @@ Meteor.methods
       misc3: misc3
 
     'deleteUser': (userId) ->
-
-    'getImage': (title) ->
-
-      if title
-        title = title.replace(/\s+/g, '+')
-      else
-        return error
-
-      cheerio = Meteor.npmRequire('cheerio')
-      url = 'http://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=' + title
-      result = Meteor.http.get(url)
-
-      if result
-        $ = cheerio.load(result.content)
-        imgsrc = $('.s-access-image.cfMarker').attr('src')
-        return imgsrc
-      else
-        return error
-
 
     'inviteUser': (email) ->
 

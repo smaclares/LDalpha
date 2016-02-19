@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 Template.Dashboard.onCreated ->
   @subscribe 'books'
   @subscribe 'bookshelf'
@@ -17,8 +15,10 @@ getBookInfo = (pgNum) ->
       Session.set 'misc1', book.subjects
       Session.set 'misc2', book.pages
       Session.set 'misc3', book.year
+      Session.set 'imgurl', book.imgurl
     return
   return
+
 
 paginate = (nav) ->
   limit = Books.find({}).count()
@@ -40,25 +40,18 @@ paginate = (nav) ->
         return 0
   return
 
-getImage = (title) ->
-  Meteor.call 'getImage', title, (error, response) ->
-    if error
-      return 'http://i.imgur.com/sJ3CT4V.gif'
-    else
-      return response
-
-
 Template.Dashboard.onRendered ->
 
   @autorun ->
     getBookInfo 0
 
+
 Template.Dashboard.helpers
 
   "image": () ->
-    title = Session.get('title')
-    if (title)
-      return getImage(title)
+    imgurl = Session.get('imgurl')
+    console.log imgurl
+    return Session.get('imgurl')
 
   "oclc": () ->
     return Session.get('oclc')
@@ -78,7 +71,6 @@ Template.Dashboard.helpers
   "misc3": () ->
     return Session.get('misc3')
 
->>>>>>> origin/master
 Template.Dashboard.events
 
   "click #prev": () ->
@@ -124,14 +116,10 @@ Template.Dashboard.events
 
     Meteor.call 'addNewBooks', sysnums, (error) ->
       if error
-<<<<<<< HEAD
-        alert 'System numbers could not be processed!'
-=======
         alert 'Could not download books!'
       else
         alert(sysnums.length + ' books have been uploaded!')
         $('#sysnums-submissions').val('')
->>>>>>> origin/master
       return
 
     $('#sysnums-submissions').val ''

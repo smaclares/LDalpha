@@ -31,9 +31,6 @@ template(name='Dashboard')
               .image
                 img(src='#{image}')
               .content
-<<<<<<< HEAD
-                +NewBooks
-=======
                 .bib-info
                   p OCLC #: #{oclc}
                   p Title: #{title}
@@ -49,7 +46,6 @@ template(name='Dashboard')
                   i.fa.fa-chevron-left
                 br
                 br
->>>>>>> origin/master
                 .ui.basic.teal.button.right.floated#add-to-bookshelf + Add to Bookshelf
                 br
                 br
@@ -71,8 +67,3 @@ template(name='Dashboard')
       +ViewBookshelf
       +Account
       +Notifications
-
-template(name='NewBooks')
-  h4 New books
-  +pages
-  +pagesNav
