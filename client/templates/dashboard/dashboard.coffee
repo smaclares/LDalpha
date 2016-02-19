@@ -38,6 +38,13 @@ paginate = (nav) ->
         return 0
   return
 
+getImage = (title) ->
+  Meteor.call 'getImage', title, (error, response) ->
+    if error
+      return 'http://i.imgur.com/sJ3CT4V.gif'
+    else
+      return response
+
 
 Template.Dashboard.onRendered ->
 
@@ -45,6 +52,11 @@ Template.Dashboard.onRendered ->
     getBookInfo 0
 
 Template.Dashboard.helpers
+
+  "image": () ->
+    title = Session.get('title')
+    if (title)
+      return getImage(title)
 
   "oclc": () ->
     return Session.get('oclc')

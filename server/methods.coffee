@@ -80,7 +80,24 @@ Meteor.methods
 
     'deleteUser': (userId) ->
 
-    'getBookImage': (title) ->
+    'getImage': (title) ->
+
+      if title
+        title = title.replace(/\s+/g, '+')
+      else
+        return error
+
+      cheerio = Meteor.npmRequire('cheerio')
+      url = 'http://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=' + title
+      result = Meteor.http.get(url)
+
+      if result
+        $ = cheerio.load(result.content)
+        imgsrc = $('.s-access-image.cfMarker').attr('src')
+        return imgsrc
+      else
+        return error
+
 
     'inviteUser': (email) ->
 
