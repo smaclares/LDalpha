@@ -61,6 +61,23 @@ Meteor.methods
       return
     return
 
+  'addToBookshelf': (data) ->
+
+    oclc = data[0]
+    title = data[1]
+    author = data[2]
+    misc1 = data[5]
+    misc2 = data[6]
+    misc3 = data[7]
+
+    Bookshelf.insert
+      oclc: oclc
+      title: title
+      author: author
+      misc1: misc1
+      misc2: misc2
+      misc3: misc3
+
     'deleteUser': (userId) ->
 
     'getBookImage': (title) ->

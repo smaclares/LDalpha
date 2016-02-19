@@ -5,13 +5,37 @@ Template.Dashboard.onCreated ->
   @subscribe 'users'
 
 getBookInfo = (pgNum) ->
+  Session.set 'pgNum', pgNum
   newBooks = Books.find({})
   newBooks.forEach (book, index) ->
     if index == pgNum
       Session.set 'oclc', book.oclc
       Session.set 'title', book.title
       Session.set 'author', book.author
+      Session.set 'misc1', book.subjects
+      Session.set 'misc2', book.pages
+      Session.set 'misc3', book.year
     return
+  return
+
+paginate = (nav) ->
+  limit = Books.find({}).count()
+  pgNum = Session.get('pgNum')
+  switch nav
+    when 'prev'
+      if pgNum > 0
+        pgNum -= 1
+        return pgNum
+      else
+        return 0
+    when 'next'
+      if pgNum < limit
+        pgNum += 1
+        return pgNum
+      else
+        return limit
+    else
+        return 0
   return
 
 
@@ -31,7 +55,24 @@ Template.Dashboard.helpers
   "author": () ->
     return Session.get('author')
 
+  "misc1": () ->
+    return Session.get('misc1')
+
+  "misc2": () ->
+    return Session.get('misc2')
+
+  "misc3": () ->
+    return Session.get('misc3')
+
 Template.Dashboard.events
+
+  "click #prev": () ->
+
+    getBookInfo paginate('prev')
+
+  "click #next": () ->
+
+    getBookInfo paginate('next')
 
   "click #notifications": () ->
     $('#notifications-modal').modal('show')
@@ -46,12 +87,19 @@ Template.Dashboard.events
     $('#account-modal').modal('show')
 
   "click #add-to-bookshelf": () ->
+    data = $('.bib-info').text().trim().split('\n')
+
+    Meteor.call 'addToBookshelf', data, (error) ->
+      if error
+        alert 'Could not add to bookshelf!'
+      else
+        title = data[1].replace('Title: ', '')
+        $('.message').show().addClass('positive')
+        $('#message-header').text('Success!')
+        $('#message-text').text(title + ' was added to your bookshelf.')
 
   "click #download-bookshelf": () ->
-      newBooks = Books.find({})
-      newBooks.forEach (book) ->
-        console.log book.title
-        return
+
 
   "click #view-bookshelf": () ->
     $('#view-bookshelf-modal').modal('show')
@@ -59,7 +107,7 @@ Template.Dashboard.events
   "click #submit-sysnums": () ->
     sysnums = $('#sysnums-submissions').val().trim().split('\n')
 
-    Meteor.call 'addNewBooks', sysnums, (error, response) ->
+    Meteor.call 'addNewBooks', sysnums, (error) ->
       if error
         alert 'Could not download books!'
       else
@@ -69,3 +117,6 @@ Template.Dashboard.events
 
   "click #clear-sysnums": () ->
     $('#sysnums-submissions').val('')
+
+  "click #message-close": (event) ->
+    $(event.currentTarget).closest('.message').transition('fade')
