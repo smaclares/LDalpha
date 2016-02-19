@@ -1,7 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
 
-body {
+body, html {
   background-image: linear-gradient(#99c7e6, #ffffff);
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 
 #add-new-books{
@@ -13,6 +15,11 @@ body {
   margin-left: 100px;
   margin-right: 100px;
 }
+
+#book-gallery-message {
+  display: none;
+}
+
 
 #book-info {
   overflow-y: scroll;
@@ -42,10 +49,6 @@ body {
   font-size: 50px;
   font-weight: 200;
   opacity: 0.7;
-}
-
-.message {
-  display: none;
 }
 
 #search {
