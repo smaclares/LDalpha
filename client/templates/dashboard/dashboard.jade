@@ -13,7 +13,14 @@ template(name='Dashboard')
               a#your-account Your Account
               a#help Help
 
+      .container
+        .ui.message#book-gallery-message
+            i.close.icon#message-close
+            .header#message-header
+            p#message-text
+
       section.ui.segment#book-gallery
+
         .ui.search#search
           .ui.icon.input
             input.prompt(placeholder='Search by OCLC' type='text')
@@ -22,8 +29,27 @@ template(name='Dashboard')
           .ui.items
             .ui.item
               .image
+                img(src='#{image}')
               .content
+<<<<<<< HEAD
                 +NewBooks
+=======
+                .bib-info
+                  p OCLC #: #{oclc}
+                  p Title: #{title}
+                  p Author: #{author}
+                  p Description:
+                    hr
+                    p #{misc1}
+                    p #{misc2}
+                    p #{misc3}
+                .ui.basic.teal.button.right.floated#next
+                    i.fa.fa-chevron-right
+                .ui.basic.teal.button.right.floated#prev
+                  i.fa.fa-chevron-left
+                br
+                br
+>>>>>>> origin/master
                 .ui.basic.teal.button.right.floated#add-to-bookshelf + Add to Bookshelf
                 br
                 br
@@ -40,6 +66,8 @@ template(name='Dashboard')
         .ui.basic.blue.button#submit-sysnums Submit
         .ui.button#clear-sysnums Clear
 
+
+      +Users
       +ViewBookshelf
       +Account
       +Notifications

@@ -19,6 +19,8 @@ caching-compiler@1.0.0
 caching-html-compiler@1.0.2
 callback-hook@1.0.4
 check@1.1.0
+chipcastledotcom:jspdf@0.0.2
+chipcastledotcom:meteor-jspdf@0.0.8
 coffeescript@1.0.11
 ddp@1.2.2
 ddp-client@1.2.1
@@ -58,7 +60,8 @@ logging@1.0.8
 mdg:validation-error@0.2.0
 meteor@1.1.10
 meteor-base@1.0.1
-meteor-platform@1.2.3
+meteorhacks:async@1.0.0
+meteorhacks:npm@1.5.0
 minifiers@1.1.7
 minimongo@1.0.10
 mobile-experience@1.0.1
@@ -69,6 +72,7 @@ mongo-id@1.0.1
 mquandalle:jade@0.4.9
 mquandalle:jade-compiler@0.4.5
 npm-bcrypt@0.7.8_2
+npm-container@1.2.0
 npm-mongo@1.4.39_1
 observe-sequence@1.0.7
 ordered-dict@1.0.4

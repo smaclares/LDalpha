@@ -1,4 +1,5 @@
 Meteor.publish 'books', ->
+<<<<<<< HEAD
   Books.find {}
 
 Meteor.publish 'bookshelf', ->
@@ -9,3 +10,9 @@ Meteor.publish 'notifications', ->
 
 Meteor.publish 'users', ->
   Meteor.users.find {}
+=======
+  return Books.find({})
+
+Meteor.publish 'bookshelf', ->
+  return Bookshelf.find({})
+>>>>>>> origin/master

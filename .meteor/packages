@@ -19,14 +19,22 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 accounts-password
 aldeed:collection2
 aldeed:autoform
+<<<<<<< HEAD
+=======
+chipcastledotcom:meteor-jspdf
+>>>>>>> origin/master
 coffeescript
 electronifiejs:pages
 flemay:less-autoprefixer
 fortawesome:fontawesome
 http
 iron:router
+meteorhacks:npm
 mquandalle:jade
 sacha:spin
 semantic:ui
 twbs:bootstrap
 underscore
+
+
+npm-container
