@@ -1,8 +1,6 @@
 Template.Dashboard.onCreated ->
   @subscribe 'books'
   @subscribe 'bookshelf'
-  @subscribe 'notifications'
-  @subscribe 'users'
 
 getBookInfo = (pgNum) ->
   Session.set 'pgNum', pgNum
