@@ -75,16 +75,16 @@ Template.Dashboard.events
     getBookInfo paginate('next')
 
   "click #notifications": () ->
-    $('#notifications-modal').modal('show')
+    $('#notifications-modal').modal 'show'
 
   "click #users": () ->
-    $('#users-modal').modal('show')
+    $('#users-modal').modal 'show'
 
   "click #log-out": () ->
     alert 'Are you sure you want to log out?'
 
   "click #your-account": () ->
-    $('#account-modal').modal('show')
+    $('#account-modal').modal 'show'
 
   "click #add-to-bookshelf": () ->
     data = $('.bib-info').text().trim().split('\n')
@@ -102,7 +102,7 @@ Template.Dashboard.events
 
 
   "click #view-bookshelf": () ->
-    $('#view-bookshelf-modal').modal('show')
+    $('#view-bookshelf-modal').modal 'show'
 
   "click #submit-sysnums": () ->
     sysnums = $('#sysnums-submissions').val().trim().split('\n')

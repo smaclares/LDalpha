@@ -1,3 +1,6 @@
+Template.Home.onCreated ->
+  @subscribe 'users'
+
 Template.Home.events
   "click #sign-in": (event) ->
 
@@ -6,10 +9,10 @@ Template.Home.events
 
     if username && password
       Meteor.loginWithPassword username, password, (error) ->
-          if error
-              $('.ui.error.message').toggle('show').text('User not found. Please try again.')
+          if Meteor.user()
+            Router.go '/dashboard'
           else
-              Router.go '/dashboard'
+            $('.ui.error.message').toggle('show').text(error.reason)
 
     else
       $('.ui.error.message').toggle('show').text('Invalid credentials. Please, try again.');

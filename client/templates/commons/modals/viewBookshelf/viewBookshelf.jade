@@ -5,4 +5,20 @@ template(name='ViewBookshelf')
       .column
         h2#register-subtitle Your Bookshelf:
         hr
-        .content
+        .content#book-info
+          each bookinfo
+            .thumbnail
+              li= oclc
+              br
+              li= title
+              br
+              li= author
+              br
+              li= misc1
+              br
+              li= misc2
+              br
+              li= misc3
+              br
+              .ui.basic.red.button#delete-from-bookshelf Delete item?
+              hr

@@ -7,3 +7,7 @@ template(name='Account')
         h2#register-subtitle Your Account:
         hr
         .content
+          p Username: #{display-username}
+          .ui.basic.blue.button#change-username Change Username?
+          .ui.basic.blue.button#change-password Change Password?
+          .ui.basic.red.button#delete-user Delete Your Account
