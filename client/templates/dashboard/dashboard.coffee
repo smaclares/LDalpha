@@ -109,7 +109,20 @@ Template.Dashboard.events
         $('#message-text').text(title + ' was added to your bookshelf.')
 
   "click #download-bookshelf": () ->
-
+    doc = new jsPDF
+    doc.setFontSize 9
+    itemText = Bookshelf.find({}).fetch()
+    _.map itemText, (item) ->
+      textdata = []
+      _.map item, (i) ->
+        if i != item._id and i != 'eng' and i != '' and String(i).indexOf('$') < 0 and String(i).indexOf('145') < 0
+          textdata.push i
+        return
+      paragraphs = doc.splitTextToSize(textdata, 140)
+      doc.text 30, 20, paragraphs
+      doc.addPage()
+      return
+      doc.save 'bookshelf.pdf'
 
   "click #view-bookshelf": () ->
     $('#view-bookshelf-modal').modal 'show'
