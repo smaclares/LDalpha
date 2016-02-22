@@ -13,10 +13,8 @@ getBookInfo = (pgNum) ->
       Session.set 'misc1', book.subjects
       Session.set 'misc2', book.pages
       Session.set 'misc3', book.year
-      Session.set 'imgurl', book.imgurl
     return
   return
-
 
 paginate = (nav) ->
   limit = Books.find({}).count()
@@ -46,11 +44,6 @@ Template.Dashboard.onRendered ->
 
 Template.Dashboard.helpers
 
-  "image": () ->
-    imgurl = Session.get('imgurl')
-    console.log imgurl
-    return Session.get('imgurl')
-
   "oclc": () ->
     return Session.get('oclc')
 
@@ -69,6 +62,16 @@ Template.Dashboard.helpers
   "misc3": () ->
     return Session.get('misc3')
 
+  "image": () ->
+    title = Session.get('title')
+    if title
+      Meteor.call 'getBookImage', title, (error, response) ->
+        if error
+          Session.set('image', 'https://images.efollett.com/books/noBookImage.gif')
+        else
+          Session.set('image', response)
+    return Session.get('image')
+
 Template.Dashboard.events
 
   "click #prev": () ->
@@ -86,7 +89,9 @@ Template.Dashboard.events
     $('#users-modal').modal 'show'
 
   "click #log-out": () ->
-    alert 'Are you sure you want to log out?'
+    Meteor.logout (error) ->
+      if error
+        alert 'Could not log out! Please try again.'
 
   "click #your-account": () ->
     $('#account-modal').modal 'show'

@@ -19,4 +19,4 @@ Template.Home.events
 
 
   "click #register": () ->
-    $('#register-modal').modal('show')
+    $('#register-modal').modal 'show'
