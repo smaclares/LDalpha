@@ -77,8 +77,8 @@ Meteor.methods
       misc2: misc2
       misc3: misc3
 
-  'deleteUser': (username) ->
-    Meteor.users().remove { username: username }, (error) ->
+  'deleteUser': (userID) ->
+    Meteor.users().remove { _id: userID }, (error) ->
       if error
         return error
       return

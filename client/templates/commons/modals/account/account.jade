@@ -1,23 +1,23 @@
 template(name='Account')
-
   .ui.small.modal#account-modal
-    i.close.icon#close
-    .ui.middle.aligned.center.aligned.grid
-      .column
-        h2#register-subtitle Your Account:
-        hr
-        .content
-          h4 Username: #{displayUsername}
-          hr
-          .ui.basic.blue.button#change-username Change Username?
-          .ui.basic.blue.button#change-password Change Password?
-          br
-          br
-          .ui.basic.red.button#delete-account Delete Your Account
+    +InnerAccount
 
-          .change-user
-            p#form-text
-            input#change-account-input(type="text")
-            br
-            br
-            .ui.basic.blue.button#change-account Confirm Change
+template(name='InnerAccount')
+  i.close.icon#close
+  .ui.middle.aligned.center.aligned.grid
+    .column
+      h2#register-subtitle Your Account:
+      hr
+      .content
+        .ui.basic.blue.button#change-username Change Username?
+        .ui.basic.blue.button#change-password Change Password?
+        br
+        br
+        .ui.basic.red.button#delete-account Delete Your Account
+
+        .change-user
+          p#form-text
+          input#change-account-input(type="text")
+          br
+          br
+          .ui.basic.blue.button#change-account Confirm Change
