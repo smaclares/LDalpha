@@ -1,4 +1,7 @@
-Template.Users.helpers
+Template.InnerUsers.events
+  "click #delete-user": (e, template) ->
+
+Template.InnerUsers.helpers
   "user": () ->
     usernames = []
     users = Meteor.users.find({})

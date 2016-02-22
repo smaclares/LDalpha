@@ -86,7 +86,12 @@ Template.Dashboard.events
     $('#notifications-modal').modal 'show'
 
   "click #users": () ->
-    $('#users-modal').modal 'show'
+    adminPass = prompt('Please enter the administrative password:')
+
+    if adminPass == 'admin_pass'
+      $('#users-modal').modal 'show'
+    else
+      alert 'Could not access admin control. Please, try again.'
 
   "click #log-out": () ->
     Meteor.logout (error) ->
@@ -102,6 +107,7 @@ Template.Dashboard.events
     Meteor.call 'addToBookshelf', data, (error) ->
       if error
         alert 'Could not add to bookshelf!'
+        console.log error
       else
         title = data[1].replace('Title: ', '')
         $('.message').show().addClass('positive')

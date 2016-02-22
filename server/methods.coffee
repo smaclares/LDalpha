@@ -77,6 +77,12 @@ Meteor.methods
       misc2: misc2
       misc3: misc3
 
+  'deleteUser': (username) ->
+    Meteor.users().remove { username: username }, (error) ->
+      if error
+        return error
+      return
+
   'getBookImage': (title) ->
 
     if title
@@ -89,7 +95,5 @@ Meteor.methods
       $ = cheerio.load(result.content)
       imgsrc = $('.s-access-image.cfMarker').attr('src')
       return imgsrc
-
-    'inviteUser': (email) ->
 
     'removeFromBookshelf' : (title) ->

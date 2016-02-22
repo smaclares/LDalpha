@@ -1,13 +1,19 @@
 template(name='Users')
   .ui.small.modal#users-modal
-    i.close.icon#close
-    .ui.middle.aligned.center.aligned.grid
-      .column
-        h2#register-subtitle Users:
-        hr
-        .content
-          ul
-            each user
+    +InnerUsers
+
+template(name='InnerUsers')
+  i.close.icon#close
+  .ui.middle.aligned.center.aligned.grid
+    .column
+      h2#register-subtitle Users:
+      hr
+      .content
+        ul
+          each user
+            .content
               li#username= username
-              .ui.basic.blue.button#change-role Change User Role
+              br
+              br
               .ui.basic.red.button#delete-user Delete This User
+              hr
