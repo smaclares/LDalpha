@@ -1,5 +1,11 @@
 Template.InnerUsers.events
-  "click #delete-user": (e, template) ->
+  "click #delete-user": () ->
+    userID = this._id
+    Meteor.call 'deleteUser', userID, (error) ->
+      if error
+        alert 'Could not delete account! Please, try again.'
+      else
+        alert 'Account successfully deleted.'
 
 Template.InnerUsers.helpers
   "user": () ->
