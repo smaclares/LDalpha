@@ -6,3 +6,8 @@ template(name='Users')
         h2#register-subtitle Users:
         hr
         .content
+          ul
+            each user
+              li#username= username
+              .ui.basic.blue.button#change-role Change User Role
+              .ui.basic.red.button#delete-user Delete This User

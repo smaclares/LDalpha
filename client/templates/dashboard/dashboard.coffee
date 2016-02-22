@@ -122,7 +122,7 @@ Template.Dashboard.events
       doc.text 30, 20, paragraphs
       doc.addPage()
       return
-      doc.save 'bookshelf.pdf'
+    doc.save 'bookshelf.pdf'
 
   "click #view-bookshelf": () ->
     $('#view-bookshelf-modal').modal 'show'

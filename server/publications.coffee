@@ -3,3 +3,6 @@ Meteor.publish 'books', ->
 
 Meteor.publish 'bookshelf', ->
   return Bookshelf.find({})
+
+Meteor.publish 'null', ->
+  return Meteor.users.find({}, {fields: {username: 1}})
