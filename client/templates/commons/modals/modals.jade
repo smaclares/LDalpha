@@ -1,0 +1,58 @@
+template(name='MainModal')
+  .ui.small.modal#main-modal
+    i.close.icon#close
+    .ui.middle.aligned.center.aligned.grid
+      .column
+        h2#modal-title #{modalTitle}:
+        hr
+        .content
+          +Template.dynamic template=modalTemplate
+
+template(name='Account')
+  .ui.basic.blue.button#change-username Change Username?
+  .ui.basic.blue.button#change-password Change Password?
+  br
+  br
+  .ui.basic.red.button#delete-account Delete Your Account
+
+  .change-user
+    p#form-text
+    input#change-account-input(type="text")
+    br
+    br
+    .ui.basic.blue.button#change-account Confirm Change
+
+template(name='Bookshelf')
+  each bookinfo
+    .thumbnail
+      li= oclc
+      br
+      li= title
+      br
+      li= author
+      br
+      li= misc1
+      br
+      li= misc2
+      br
+      li= misc3
+      br
+      .ui.basic.red.button#delete-from-bookshelf Delete item?
+      hr
+
+template(name='Help')
+  p Send a message to an admin, and we will get back to you as soon as possible!
+  textarea(cols='45')#help-request
+  hr
+  .ui.basic.blue.button#send-help-request Send Request
+
+template(name='Register')
+  form.ui.large.form
+    .ui.stacked.segment
+      .field
+        input(type='text' name='registration-code' placeholder='Access Code')
+      .field
+        input#username(type='text' name='email' placeholder='Your Email Address')
+      .field
+        input#password(type='password' name='password' placeholder='Password')
+      .ui.fluid.large.teal.submit.button.approve#complete-register Complete Registration

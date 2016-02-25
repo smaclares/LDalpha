@@ -82,9 +82,6 @@ Template.Dashboard.events
 
     getBookInfo paginate('next')
 
-  "click #notifications": () ->
-    $('#notifications-modal').modal 'show'
-
   "click #users": () ->
     adminPass = prompt('Please enter the administrative password:')
 
@@ -99,7 +96,9 @@ Template.Dashboard.events
         alert 'Could not log out! Please try again.'
 
   "click #your-account": () ->
-    $('#account-modal').modal 'show'
+    Session.set('modalTitle', 'Your Account:')
+    Session.set('modalTemplate', 'Account')
+    $('#main-modal').modal 'show'
 
   "click #help": () ->
     $('#help-modal').modal 'show'
