@@ -101,6 +101,9 @@ Template.Dashboard.events
   "click #your-account": () ->
     $('#account-modal').modal 'show'
 
+  "click #help": () ->
+    $('#help-modal').modal 'show'
+
   "click #add-to-bookshelf": () ->
     data = $('.bib-info').text().trim().split('\n')
 
