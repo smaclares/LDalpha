@@ -2,45 +2,10 @@ Template.Dashboard.onCreated ->
   @subscribe 'books'
   @subscribe 'bookshelf'
 
-getBookInfo = (pgNum) ->
-  Session.set 'pgNum', pgNum
-  newBooks = Books.find({})
-  newBooks.forEach (book, index) ->
-    if index == pgNum
-      Session.set 'oclc', book.oclc
-      Session.set 'title', book.title
-      Session.set 'author', book.author
-      Session.set 'misc1', book.subjects
-      Session.set 'misc2', book.pages
-      Session.set 'misc3', book.year
-    return
-  return
-
-paginate = (nav) ->
-  limit = Books.find({}).count()
-  pgNum = Session.get('pgNum')
-  switch nav
-    when 'prev'
-      if pgNum > 0
-        pgNum -= 1
-        return pgNum
-      else
-        return 0
-    when 'next'
-      if pgNum < limit
-        pgNum += 1
-        return pgNum
-      else
-        return limit
-    else
-        return 0
-  return
-
 Template.Dashboard.onRendered ->
 
   @autorun ->
-    getBookInfo 0
-
+    Library.bookInfo(0)
 
 Template.Dashboard.helpers
 
@@ -64,23 +29,15 @@ Template.Dashboard.helpers
 
   "image": () ->
     title = Session.get('title')
-    if title
-      Meteor.call 'getBookImage', title, (error, response) ->
-        if error
-          Session.set('image', 'https://images.efollett.com/books/noBookImage.gif')
-        else
-          Session.set('image', response)
-    return Session.get('image')
+    return Library.getBookImage(title)
 
 Template.Dashboard.events
 
   "click #prev": () ->
-
-    getBookInfo paginate('prev')
+    Library.bookInfo(Library.paginate('prev'))
 
   "click #next": () ->
-
-    getBookInfo paginate('next')
+    Library.bookInfo(Library.paginate('next'))
 
   "click #users": () ->
     adminPass = prompt('Please enter the administrative password:')
@@ -96,57 +53,23 @@ Template.Dashboard.events
         alert 'Could not log out! Please try again.'
 
   "click #your-account": () ->
-    Session.set('modalTitle', 'Your Account:')
-    Session.set('modalTemplate', 'Account')
-    $('#main-modal').modal 'show'
+    Modal.showModal 'Your Account:', 'Account'
 
   "click #help": () ->
-    $('#help-modal').modal 'show'
+    Modal.showModal 'Help:', 'Help'
 
   "click #add-to-bookshelf": () ->
-    data = $('.bib-info').text().trim().split('\n')
-
-    Meteor.call 'addToBookshelf', data, (error) ->
-      if error
-        alert 'Could not add to bookshelf!'
-        console.log error
-      else
-        title = data[1].replace('Title: ', '')
-        $('.message').show().addClass('positive')
-        $('#message-header').text('Success!')
-        $('#message-text').text(title + ' was added to your bookshelf.')
+    LibraryBookshelf.addBookToBookshelf()
 
   "click #download-bookshelf": () ->
-    doc = new jsPDF
-    doc.setFontSize 9
-    itemText = Bookshelf.find({}).fetch()
-    _.map itemText, (item) ->
-      textdata = []
-      _.map item, (i) ->
-        if i != item._id and i != 'eng' and i != '' and String(i).indexOf('$') < 0 and String(i).indexOf('145') < 0
-          textdata.push i
-        return
-      paragraphs = doc.splitTextToSize(textdata, 140)
-      doc.text 30, 20, paragraphs
-      doc.addPage()
-      return
-    doc.save 'bookshelf.pdf'
+    LibraryBookshelf.getPDF()
 
   "click #view-bookshelf": () ->
-    $('#view-bookshelf-modal').modal 'show'
+    Modal.showModal 'Your Bookshelf:', 'Bookshelf'
 
   "click #submit-sysnums": () ->
     sysnums = $('#sysnums-submissions').val().trim().split('\n')
-
-    Meteor.call 'addNewBooks', sysnums, (error) ->
-      if error
-        alert 'Could not download books!'
-      else
-        alert(sysnums.length + ' books have been uploaded!')
-        $('#sysnums-submissions').val('')
-      return
-
-    $('#sysnums-submissions').val ''
+    Library.addBookstoLibrary(sysnums)
 
   "click #clear-sysnums": () ->
     $('#sysnums-submissions').val('')

@@ -3,7 +3,7 @@ template(name='MainModal')
     i.close.icon#close
     .ui.middle.aligned.center.aligned.grid
       .column
-        h2#modal-title #{modalTitle}:
+        h2#modal-title #{modalTitle}
         hr
         .content
           +Template.dynamic template=modalTemplate
@@ -23,22 +23,23 @@ template(name='Account')
     .ui.basic.blue.button#change-account Confirm Change
 
 template(name='Bookshelf')
-  each bookinfo
-    .thumbnail
-      li= oclc
-      br
-      li= title
-      br
-      li= author
-      br
-      li= misc1
-      br
-      li= misc2
-      br
-      li= misc3
-      br
-      .ui.basic.red.button#delete-from-bookshelf Delete item?
-      hr
+  .bookshelf-content
+    each bookinfo
+      .thumbnail#book-info
+        li= oclc
+        br
+        li= title
+        br
+        li= author
+        br
+        li= misc1
+        br
+        li= misc2
+        br
+        li= misc3
+        br
+        .ui.basic.red.button#delete-from-bookshelf Delete item?
+        hr
 
 template(name='Help')
   p Send a message to an admin, and we will get back to you as soon as possible!

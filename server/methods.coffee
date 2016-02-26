@@ -60,7 +60,7 @@ Meteor.methods
       return
     return
 
-  'addToBookshelf': (data) ->
+  'addToBookshelf': (data, userId) ->
 
     oclc = data[0]
     title = data[1]
@@ -68,6 +68,7 @@ Meteor.methods
     misc1 = data[5]
     misc2 = data[6]
     misc3 = data[7]
+    user_id = userId
 
     Bookshelf.insert
       oclc: oclc
@@ -76,6 +77,7 @@ Meteor.methods
       misc1: misc1
       misc2: misc2
       misc3: misc3
+      user_id: user_id
 
   'deleteUser': (userID) ->
     Meteor.users().remove { _id: userID }, (error) ->
