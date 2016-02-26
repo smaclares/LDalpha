@@ -97,17 +97,22 @@
 }
 
 @Modal = {
+
+  clearRegisterModal: () ->
+      $('[name="registration-code"]').val('')
+      $('#username').val('')
+      $('#password').val('')
+
   showModal: (title, template) ->
     Session.set('modalTitle', title)
     Session.set('modalTemplate', template)
     $('#main-modal').modal 'show'
-
 }
 
 @Patron = {
   createPatron: (username, password) ->
 
-      if username && password
+    if username && password
 
         Accounts.createUser {
           username: username
@@ -115,13 +120,27 @@
         },  (error) ->
           if error
             alert 'Account creation failed! Please, try again or contact an Admin.'
-            clearModal()
+            Modal.clearRegisterModal()
             return;
+          else
+            $('#main-modal').modal 'hide'
 
-        alert 'Account creation successful! You may now log in.'
+    else
+      alert 'Invalid credentials. Please, try again.'
+      Modal.clearRegisterModal()
+      return;
+
+  registerPatron: () ->
+
+      accessCode = $('[name="registration-code"]').val()
+
+      if accessCode == 'libraryStaff'
+        username = $('#username').val()
+        password = $('#password').val()
+
+        Patron.createPatron(username, password)
 
       else
-        alert 'Invalid credentials. Please, try again.'
-        clearModal()
-        return;
+          alert 'Invalid access code. Please, try again.'
+          clearModal()
 }
