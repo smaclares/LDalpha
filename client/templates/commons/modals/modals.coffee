@@ -10,10 +10,15 @@ Template.MainModal.helpers
    'bookinfo': () ->
      return Bookshelf.find({})
 
- Template.Register.events
+Template.Register.events
 
     "click #close": () ->
       $('#register-modal').modal 'hide'
 
     "click #complete-register": () ->
       Patron.registerPatron()
+
+Template.Admin.events
+
+    "click #log-in-as-admin": () ->
+      Admin.logInAdmin()

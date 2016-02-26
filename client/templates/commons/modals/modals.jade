@@ -8,6 +8,16 @@ template(name='MainModal')
         .content
           +Template.dynamic template=modalTemplate
 
+template(name='Admin')
+  p If you have Adminstrative privileges, please input your credentials below.
+  form.ui.large.form
+    .ui.stacked.segment
+      .field
+        input#admin-username(type='text' name='email' placeholder='Your Email Address')
+      .field
+        input#admin-password(type='password' name='password' placeholder='Password')
+      .ui.fluid.large.teal.submit.button.approve#log-in-as-admin Log In as Admin
+
 template(name='Account')
   .ui.basic.blue.button#change-username Change Username?
   .ui.basic.blue.button#change-password Change Password?

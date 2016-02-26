@@ -6,6 +6,18 @@
   deleteAccount: (userId) ->
 }
 
+@Admin = {
+
+  logInAdmin: () ->
+    username = $('#admin-username').val()
+    password = $('admin-password').val()
+
+    if username && password
+      # check if username and password match default admin username and password
+    #else
+      #tell user input is invalid
+}
+
 
 @LibraryBookshelf = {
   addBookToBookshelf: () ->
@@ -99,9 +111,9 @@
 @Modal = {
 
   clearRegisterModal: () ->
-      $('[name="registration-code"]').val('')
-      $('#username').val('')
-      $('#password').val('')
+    $('[name="registration-code"]').val('')
+    $('#username').val('')
+    $('#password').val('')
 
   showModal: (title, template) ->
     Session.set('modalTitle', title)

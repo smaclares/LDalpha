@@ -33,6 +33,9 @@ Template.Dashboard.helpers
 
 Template.Dashboard.events
 
+  "click #admin": () ->
+    Modal.showModal 'Admin:', 'Admin'
+
   "click #prev": () ->
     Library.bookInfo(Library.paginate('prev'))
 
