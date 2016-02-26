@@ -29,6 +29,7 @@ template(name='Dashboard')
             .ui.item
               .image
                 img#bib-image(src='#{image}')
+                img#google-img(src='https://magellan.bristolcathedral.org.uk/Magellan/Images/TileIcons/google-logo.png')
               .content
                 .bib-info
                   p OCLC #: #{oclc}
@@ -46,7 +47,8 @@ template(name='Dashboard')
                 br
                 br
                 hr
-                .ui.basic.red.button.right.floated#delete-book Delete Book From Collection
+                if isInRole 'admin'
+                  .ui.basic.red.button.right.floated#delete-book Delete Book From Collection
                 .ui.basic.teal.button.right.floated#add-to-bookshelf + Add to Bookshelf
                 br
                 br

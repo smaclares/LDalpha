@@ -18,6 +18,15 @@ Template.Register.events
     "click #complete-register": () ->
       Patron.registerPatron()
 
+Template.Account.events
+
+  "click #change-username": () ->
+    Account.changeUserInfo('username')
+
+  "click #change-password": () ->
+    Account.changeUserInfo('password')
+
+
 Template.Admin.events
 
     "click #log-in-as-admin": () ->

@@ -42,14 +42,6 @@ Template.Dashboard.events
   "click #next": () ->
     Library.bookInfo(Library.paginate('next'))
 
-  "click #users": () ->
-    adminPass = prompt('Please enter the administrative password:')
-
-    if adminPass == 'admin_pass'
-      $('#users-modal').modal 'show'
-    else
-      alert 'Could not access admin control. Please, try again.'
-
   "click #log-out": () ->
     Meteor.logout (error) ->
       if error
@@ -60,6 +52,14 @@ Template.Dashboard.events
 
   "click #help": () ->
     Modal.showModal 'Help:', 'Help'
+
+  "click #google-img": () ->
+    title = Session.get('title')
+    Library.searchGoogle(title)
+
+  "click #delete-book": () ->
+    title = Session.get('title')
+    Library.deleteBook(title, 'Books')
 
   "click #add-to-bookshelf": () ->
     LibraryBookshelf.addBookToBookshelf()

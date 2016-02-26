@@ -1,21 +1,48 @@
 @Account = {
-  changeUserName: (newUsername) ->
 
-  changePassword: (newPassword) ->
+  changeUserInfo: (data) ->
 
-  deleteAccount: (userId) ->
+    switch data
+      when 'username'
+        newUsername = prompt('Please, enter your new username: ')
+
+        if newUsername
+          Meteor.user().username = newUsername
+          alert 'Change successful! You new username is: ' + newUsername
+        else
+          alert 'Invalid input! Please, try again.'
+
+      when 'password'
+        newPassword = prompt('Please, enter your new password: ')
+
+        if newPassword
+          Meteor.user().password = newPassword
+          alert 'Change successful! You new password is: ' + newPassword
+        else
+          alert 'Invalid input! Please, try again.'
+
+  deleteAccount: () ->
+    Meteor.call 'deleteUser', Meteor.userId(), (error) ->
+      if error
+        alert 'Could not delete account! Please, try again.'
 }
 
 @Admin = {
 
   logInAdmin: () ->
     username = $('#admin-username').val()
-    password = $('admin-password').val()
+    password = $('#admin-password').val()
 
     if username && password
-      # check if username and password match default admin username and password
-    #else
-      #tell user input is invalid
+
+      if username == 'admin' && password == 'admin'
+        alert 'You are now logged in as an admin.'
+        Roles.addUsersToRoles(Meteor.userId(), user.roles, 'admin')
+        $('#main-modal').modal 'hide'
+      else
+        alert 'Credentials not valid. Please, try again.'
+    else
+      alert 'Username or password were invalid. Please, try again.'
 }
 
 
@@ -77,6 +104,13 @@
         Session.set 'misc3', book.year
       return
 
+  deleteBook: (title, db) ->
+    Meteor.call 'deleteBook', title, db, (error) ->
+      if error
+        alert 'Could not delete book!'
+      else
+        alert title + ' has been deleted.'
+
    getBookImage: (title) ->
       if title
         Meteor.call 'getBookImage', title, (error, response) ->
@@ -106,6 +140,9 @@
             return 0
       return
 
+    searchGoogle: (title) ->
+      title = title.replace(/\s+/g, '+')
+      window.open('https://www.google.com/?gws_rd=ssl#q=' + title, '_blank')
 }
 
 @Modal = {

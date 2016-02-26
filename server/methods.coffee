@@ -79,6 +79,20 @@ Meteor.methods
       misc3: misc3
       user_id: user_id
 
+
+  'deleteBook': (title, db) ->
+    switch db
+      when 'Books'
+        Books.remove {title:title}, (error) ->
+          if error
+            return error
+          return
+      when 'Bookshelf'
+        Bookshelf.remove {title:title}, (error) ->
+          if error
+            return error
+          return
+
   'deleteUser': (userID) ->
     Meteor.users().remove { _id: userID }, (error) ->
       if error
@@ -97,5 +111,3 @@ Meteor.methods
       $ = cheerio.load(result.content)
       imgsrc = $('.s-access-image.cfMarker').attr('src')
       return imgsrc
-
-    'removeFromBookshelf' : (title) ->
