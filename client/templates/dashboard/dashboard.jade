@@ -1,31 +1,5 @@
 template(name='Dashboard')
 
-<<<<<<< HEAD
-.row
-  .col-xs-6
-    .search
-      input(type='text')
-      button.btn.btn-primary#search
-        i.fa.fa-searcg
-  .col-xs-6
-  .user-btns
-    a#your-account Your Account
-    button.btn.btn-primary#view-bookshelf View Bookshelf
-
-.row
-  .col-xs-6
-    .bookimage
-      span #{bib-image}
-  .col-xs-6
-    .bookgallery
-      +pages
-      +pagesNav
-
-.add-books
-  label Add Books (by OCLC Numbers):
-  textarea#sysnums-submission(cols='3')
-  button.btn.btn-primary#submit-sysnums Submit
-=======
       .ui.menu#dashboard-nav
         .left.header.white.item Palm Beach State College | Lake Worth Library
         .right
@@ -92,4 +66,3 @@ template(name='Dashboard')
         .ui.button#clear-sysnums Clear
 
       +MainModal
->>>>>>> origin/master

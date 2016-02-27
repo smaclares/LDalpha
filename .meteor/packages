@@ -23,17 +23,11 @@ aldeed:autoform
 chipcastledotcom:meteor-jspdf
 coffeescript
 email
-electronifiejs:pages
 flemay:less-autoprefixer
 fortawesome:fontawesome
-<<<<<<< HEAD
-fourseven:scss
-iron:router
-=======
 http
 iron:router
 meteorhacks:npm
->>>>>>> origin/master
 mquandalle:jade
 sacha:spin
 semantic:ui
