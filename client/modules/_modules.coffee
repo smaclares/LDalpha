@@ -82,14 +82,14 @@
 }
 
 @Library = {
-  addBookstoLibrary: (sysnums) ->
-    Meteor.call 'addNewBooks', sysnums, (error) ->
-      if error
-        alert 'Could not download books!'
-      else
-        alert(sysnums.length + ' books have been uploaded!')
-        $('#sysnums-submissions').val('')
-      return
+  # addBookstoLibrary: (sysnums) ->
+  #   Meteor.call 'addNewBooks', sysnums, (error) ->
+  #     if error
+  #       alert 'Could not download books!'
+  #     else
+  #       alert(sysnums.length + ' books have been uploaded!')
+  #       $('#sysnums-submissions').val('')
+  #     return
 
   bookInfo: (pgNum) ->
     Session.set 'pgNum', pgNum
