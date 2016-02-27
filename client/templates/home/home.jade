@@ -1,5 +1,6 @@
 template(name='Home')
 
+<<<<<<< HEAD
   header
     h1.title Library Dashboard
     span.lib-icon
@@ -14,3 +15,33 @@ template(name='Home')
     input#password-input(type='password')
     br
     button.btn.btn-primary#sign-in Sign In
+=======
+  main
+    section.ui.raised.very.padded.text.container.segment#log-in-content
+      header
+        h1.ui.teal.center.aligned.header#main-title Library Dashboard
+        hr
+
+      .ui.middle.aligned.center.aligned.grid
+        .column
+          h2.ui.teal.header
+            .content Please, sign in:
+          form.ui.large.form
+            .ui.stacked.segment
+              .field
+                .ui.left.icon.input
+                  i.user.icon
+                  input(type='text' name='email' placeholder='E-mail address')
+              .field
+                .ui.left.icon.input
+                  i.lock.icon
+                  input(type='password' name='password' placeholder='Password')
+              .ui.fluid.large.teal.submit.button#sign-in Sign In
+
+              .ui.error.message
+
+              .ui.message Have an Access Code?
+                a#register Register Here.
+
+    +MainModal
+>>>>>>> origin/master

@@ -16,12 +16,29 @@ standard-minifiers      # JS/CSS minifiers run for production mode
 es5-shim                # ECMAScript 5 compatibility for older browsers.
 ecmascript              # Enable ECMAScript2015+ syntax in app code
 
+accounts-password
+alanning:roles
 aldeed:collection2
 aldeed:autoform
-alethes:pages
+chipcastledotcom:meteor-jspdf
+coffeescript
+email
+electronifiejs:pages
+flemay:less-autoprefixer
 fortawesome:fontawesome
+<<<<<<< HEAD
 fourseven:scss
 iron:router
+=======
+http
+iron:router
+meteorhacks:npm
+>>>>>>> origin/master
 mquandalle:jade
 sacha:spin
+semantic:ui
 twbs:bootstrap
+underscore
+
+
+npm-container

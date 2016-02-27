@@ -1,10 +1,19 @@
+<<<<<<< HEAD
+=======
+accounts-base@1.2.2
+accounts-password@1.1.4
+alanning:roles@1.2.14
+>>>>>>> origin/master
 aldeed:autoform@5.8.1
 aldeed:collection2@2.8.0
 aldeed:collection2-core@1.0.0
 aldeed:schema-deny@1.0.1
 aldeed:schema-index@1.0.1
 aldeed:simple-schema@1.5.3
+<<<<<<< HEAD
 alethes:pages@1.8.4
+=======
+>>>>>>> origin/master
 autoupdate@1.2.4
 babel-compiler@5.8.24_1
 babel-runtime@0.1.4
@@ -18,20 +27,33 @@ caching-compiler@1.0.0
 caching-html-compiler@1.0.2
 callback-hook@1.0.4
 check@1.1.0
+<<<<<<< HEAD
+=======
+chipcastledotcom:jspdf@0.0.2
+chipcastledotcom:meteor-jspdf@0.0.8
+>>>>>>> origin/master
 coffeescript@1.0.11
 ddp@1.2.2
 ddp-client@1.2.1
 ddp-common@1.2.2
+ddp-rate-limiter@1.0.0
 ddp-server@1.2.2
 deps@1.0.9
 diff-sequence@1.0.1
 ecmascript@0.1.6
 ecmascript-runtime@0.2.6
 ejson@1.0.7
+electronifiejs:pages@1.8.8
+email@1.0.8
 es5-shim@4.1.14
 fastclick@1.0.7
+<<<<<<< HEAD
 fortawesome:fontawesome@4.5.0
 fourseven:scss@3.4.1
+=======
+flemay:less-autoprefixer@1.2.0
+fortawesome:fontawesome@4.5.0
+>>>>>>> origin/master
 geojson-utils@1.0.4
 hot-code-push@1.0.0
 html-tools@1.0.5
@@ -49,11 +71,17 @@ iron:url@1.0.11
 jquery@1.11.4
 launch-screen@1.0.4
 livedata@1.0.15
+localstorage@1.0.5
 logging@1.0.8
 mdg:validation-error@0.2.0
 meteor@1.1.10
 meteor-base@1.0.1
 meteor-platform@1.2.3
+<<<<<<< HEAD
+=======
+meteorhacks:async@1.0.0
+meteorhacks:npm@1.5.0
+>>>>>>> origin/master
 minifiers@1.1.7
 minimongo@1.0.10
 mobile-experience@1.0.1
@@ -61,23 +89,39 @@ mobile-status-bar@1.0.6
 momentjs:moment@2.10.6
 mongo@1.1.3
 mongo-id@1.0.1
+<<<<<<< HEAD
 mquandalle:jade@0.4.8
 mquandalle:jade-compiler@0.4.5
+=======
+mquandalle:jade@0.4.9
+mquandalle:jade-compiler@0.4.5
+npm-bcrypt@0.7.8_2
+npm-container@1.2.0
+>>>>>>> origin/master
 npm-mongo@1.4.39_1
 observe-sequence@1.0.7
 ordered-dict@1.0.4
 promise@0.5.1
 raix:eventemitter@0.1.3
 random@1.0.5
+rate-limit@1.0.0
 reactive-dict@1.1.3
 reactive-var@1.0.6
 reload@1.1.4
 retry@1.0.4
 routepolicy@1.0.6
 sacha:spin@2.3.1
+<<<<<<< HEAD
+=======
+semantic:ui@2.1.8
+semantic:ui-data@2.1.8
+service-configuration@1.0.5
+>>>>>>> origin/master
 session@1.1.1
+sha@1.0.4
 spacebars@1.0.7
 spacebars-compiler@1.0.7
+srp@1.0.4
 standard-minifiers@1.0.2
 templating@1.1.5
 templating-tools@1.0.0
