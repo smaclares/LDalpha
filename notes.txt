@@ -1,6 +1,3 @@
-1) redesign modals to be dynamic:
-  have one main modal template, and sub-modal templates for each popup
-2) put pictures in PDFs
-3) test registration process
-
-4) Add new APIs and more dynamic features?
+1) redesign error displays
+2) add email
+3) add message area to modals

@@ -72,14 +72,7 @@ Template.Dashboard.events
 
   "click #submit-sysnums": () ->
     sysnums = $('#sysnums-submissions').val().trim().split('\n')
-
-    Meteor.call 'addNewBooks', sysnums, (error) ->
-        if error
-          alert 'Could not download books!'
-        else
-          alert(sysnums.length + ' books have been uploaded!')
-          $('#sysnums-submissions').val('')
-        return
+    Library.addBookstoLibrary(sysnums)
 
   "click #clear-sysnums": () ->
     $('#sysnums-submissions').val('')
