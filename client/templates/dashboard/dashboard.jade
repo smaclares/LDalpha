@@ -19,14 +19,14 @@ template(name='Dashboard')
             p#message-text
 
       .ui.vertical.menu#section-nav
-          a.item.active.teal New Books
-          a.item ALEPH
+        a.item.active.teal New Books
+        a.item ALEPH
 
       section.ui.segment#book-gallery
           .ui.search#search
             .ui.icon.input
-              input.prompt(placeholder='Search by OCLC' type='text')
-              i.search.icon
+              input.prompt#search-input(placeholder='Search by OCLC' type='text')
+            i.search.icon#search-button
             hr
             .ui.items
               .ui.item

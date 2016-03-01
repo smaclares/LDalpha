@@ -140,8 +140,28 @@
           else
             return limit
         else
-            return 0
+            if $.isNumeric(nav) && nav < limit && nav > 0
+              pgNum = nav
+              return pgNum
+            else
+              return 0
       return
+
+    search: (num) ->
+
+      key = false;
+      i = 0;
+      searchItems = Books.find({})
+      searchItems.forEach (book, index) ->
+        if num == book.oclc
+          key = true;
+          i = index;
+
+      if key == true
+        Library.bookInfo(Library.paginate(i))
+      else
+        alert 'Book not found.'
+
 
     searchGoogle: (title) ->
       title = title.replace(/\s+/g, '+')

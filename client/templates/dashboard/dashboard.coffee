@@ -70,6 +70,11 @@ Template.Dashboard.events
   "click #view-bookshelf": () ->
     Modal.showModal 'Your Bookshelf:', 'Bookshelf'
 
+  "click #search-button": () ->
+    oclcnum = $('#search-input').val()
+    Library.search(oclcnum)
+    $('#search-input').val(' ')
+
   "click #submit-sysnums": () ->
     sysnums = $('#sysnums-submissions').val().trim().split('\n')
     Library.addBookstoLibrary(sysnums)
