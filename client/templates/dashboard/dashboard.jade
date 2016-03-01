@@ -12,6 +12,11 @@ template(name='Dashboard')
               a#your-account Your Account
               a#help Help
 
+      .container#user-display
+        img.ui.avatar.image#avatar(src='https://cdn4.iconfinder.com/data/icons/gray-user-management/512/remove-512.png')
+        span #{username}
+        br
+        i.fa.fa-envelope-o#notifications  2
       .container
         .ui.message#book-gallery-message
             i.close.icon#message-close
@@ -21,6 +26,8 @@ template(name='Dashboard')
       .ui.vertical.menu#section-nav
         a.item.active.teal New Books
         a.item ALEPH
+        a.item Congressional Digests
+        a.item Library Statistics
 
       section.ui.segment#book-gallery
           .ui.search#search
@@ -56,6 +63,8 @@ template(name='Dashboard')
                   br
                   br
                   hr
+                  i.fa.fa-twitter-square#twitter
+                  i.fa.fa-facebook-square#facebook
                   .ui.basic.blue.button.right.floated#view-bookshelf View Bookshelf
                   .ui.basic.blue.button.right.floated#download-bookshelf Download Bookshelf
 

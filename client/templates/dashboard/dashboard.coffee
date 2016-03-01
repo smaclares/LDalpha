@@ -31,6 +31,9 @@ Template.Dashboard.helpers
     title = Session.get('title')
     return Library.getBookImage(title)
 
+  "username": () ->
+    return Meteor.user().username
+
 Template.Dashboard.events
 
   "click #admin": () ->

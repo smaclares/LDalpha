@@ -6,6 +6,11 @@ body, html {
   background-size: 100%;
 }
 
+#avatar {
+  height: 100px;
+  width: 100px;
+}
+
 #add-new-books{
   float: right;
   margin-right: 45px;
@@ -15,6 +20,7 @@ body, html {
 #book-gallery {
   margin-left: 300px;
   margin-right: 50px;
+  margin-top: -150px;
 }
 
 #book-gallery-message {
@@ -41,6 +47,18 @@ body, html {
 
 #dashboard-nav{
   padding: 15px;
+}
+
+#facebook {
+  color: #99ccff;
+  cursor: default;
+  float: left;
+  font-size: 50px;
+  margin: 5px;
+}
+
+#facebook:hover {
+  color: #0066cc;
 }
 
 #google-img {
@@ -90,7 +108,19 @@ body, html {
 
 #section-nav {
   margin-left: 30px;
-  transform: translateY(120%);
+  transform: translateY(20%);
+}
+
+#twitter {
+  &:extend(#facebook);
+}
+
+#twitter:hover {
+  &:extend(#facebook:hover);
+}
+
+#user-display {
+  float: left;
 }
 
 .user-links a{
