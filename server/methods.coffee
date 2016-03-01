@@ -1,5 +1,8 @@
 Meteor.methods
 
+  'addAdminRole' : (user) ->
+    Roles.addUsersToRoles user, 'admin'
+
   'addNewBooks': (sysnums) ->
 
     urls = []

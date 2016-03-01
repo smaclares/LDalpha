@@ -1,14 +1,3 @@
-# @Error = {
-
-  # displayError: (text, template) ->
-  #  switch template
-  #    when 'home'
-  #    when 'dashboard'
-  #    when 'modal'
-
-#}
-
-
 @Account = {
 
   changeUserInfo: (data) ->
@@ -47,8 +36,11 @@
     if username && password
 
       if username == 'admin' && password == 'admin'
-        alert 'You are now logged in as an admin.'
-        Roles.addUsersToRoles(Meteor.userId(), user.roles, 'admin')
+        Meteor.call 'addAdminRole', Meteor.userId(), (error) ->
+          if error
+            alert 'Could not log in as admin!'
+          else
+            alert 'You are now logged in as an admin.'
         $('#main-modal').modal 'hide'
       else
         alert 'Credentials not valid. Please, try again.'

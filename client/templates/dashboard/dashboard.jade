@@ -18,43 +18,46 @@ template(name='Dashboard')
             .header#message-header
             p#message-text
 
-      section.ui.segment#book-gallery
+      .ui.vertical.menu#section-nav
+          a.item.active.teal New Books
+          a.item ALEPH
 
-        .ui.search#search
-          .ui.icon.input
-            input.prompt(placeholder='Search by OCLC' type='text')
-            i.search.icon
-          hr
-          .ui.items
-            .ui.item
-              .image
-                img#bib-image(src='#{image}')
-                img#google-img(src='https://magellan.bristolcathedral.org.uk/Magellan/Images/TileIcons/google-logo.png')
-              .content
-                .bib-info
-                  p OCLC #: #{oclc}
-                  p Title: #{title}
-                  p Author: #{author}
-                  p Description:
-                    hr
-                    p #{misc1}
-                    p #{misc2}
-                    p #{misc3}
-                .ui.basic.teal.button.right.floated#next
-                    i.fa.fa-chevron-right
-                .ui.basic.teal.button.right.floated#prev
-                  i.fa.fa-chevron-left
-                br
-                br
-                hr
-                if isInRole 'admin'
-                  .ui.basic.red.button.right.floated#delete-book Delete Book From Collection
-                .ui.basic.teal.button.right.floated#add-to-bookshelf + Add to Bookshelf
-                br
-                br
-                hr
-                .ui.basic.blue.button.right.floated#view-bookshelf View Bookshelf
-                .ui.basic.blue.button.right.floated#download-bookshelf Download Bookshelf
+      section.ui.segment#book-gallery
+          .ui.search#search
+            .ui.icon.input
+              input.prompt(placeholder='Search by OCLC' type='text')
+              i.search.icon
+            hr
+            .ui.items
+              .ui.item
+                .image
+                  img#bib-image(src='#{image}')
+                  img#google-img(src='https://magellan.bristolcathedral.org.uk/Magellan/Images/TileIcons/google-logo.png')
+                .content
+                  .bib-info
+                    p OCLC #: #{oclc}
+                    p Title: #{title}
+                    p Author: #{author}
+                    p Description:
+                      hr
+                      p #{misc1}
+                      p #{misc2}
+                      p #{misc3}
+                  .ui.basic.teal.button.right.floated#next
+                      i.fa.fa-chevron-right
+                  .ui.basic.teal.button.right.floated#prev
+                    i.fa.fa-chevron-left
+                  br
+                  br
+                  hr
+                  if isInRole 'admin'
+                    .ui.basic.red.button.right.floated#delete-book Delete Book From Collection
+                  .ui.basic.teal.button.right.floated#add-to-bookshelf + Add to Bookshelf
+                  br
+                  br
+                  hr
+                  .ui.basic.blue.button.right.floated#view-bookshelf View Bookshelf
+                  .ui.basic.blue.button.right.floated#download-bookshelf Download Bookshelf
 
       section.ui.segment#add-new-books
         p Submit List from FLVC Here:
