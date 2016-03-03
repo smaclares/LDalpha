@@ -32,7 +32,7 @@ Template.Dashboard.helpers
     return Library.getBookImage(title)
 
   "username": () ->
-    return Meteor.user().username
+    return Meteor.user() && Meteor.user().username
 
 Template.Dashboard.events
 

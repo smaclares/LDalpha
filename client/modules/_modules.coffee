@@ -25,6 +25,7 @@
     Meteor.call 'deleteUser', Meteor.userId(), (error) ->
       if error
         alert 'Could not delete account! Please, try again.'
+        
 }
 
 @Admin = {
@@ -115,13 +116,13 @@
         alert title + ' has been deleted.'
 
    getBookImage: (title) ->
-      if title
-        Meteor.call 'getBookImage', title, (error, response) ->
-          if error
-            Session.set('image', 'https://images.efollett.com/books/noBookImage.gif')
-          else
-            Session.set('image', response)
-      return Session.get('image')
+     if title
+      Meteor.call 'getBookImage', title, (error, response) ->
+        if error
+          Session.set('image', 'https://images.efollett.com/books/noBookImage.gif')
+        else
+          Session.set('image', response)
+     return Session.get('image')
 
     paginate: (nav) ->
       limit = Books.find({}).count()
