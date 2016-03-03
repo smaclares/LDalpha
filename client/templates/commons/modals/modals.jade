@@ -57,6 +57,9 @@ template(name='Help')
   hr
   .ui.basic.blue.button#send-help-request Send Request
 
+template(name='Notifications')
+  .notifications-content
+
 template(name='Register')
   form.ui.large.form
     .ui.stacked.segment
@@ -67,3 +70,6 @@ template(name='Register')
       .field
         input#password(type='password' name='password' placeholder='Password')
       .ui.fluid.large.teal.submit.button.approve#complete-register Complete Registration
+
+template(name='Users')
+  .users-content

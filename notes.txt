@@ -1,3 +1,6 @@
-1) redesign error displays
-2) add email
-3) add message area to modals
+1) method to clear redundant books from Books and Bookshelf
+2) Admin can view and delete users
+
+3) Connect to ALEPH Api
+4) Display Congressional Digests?
+5) Display Library stats through given Apis

@@ -4,6 +4,8 @@ template(name='Dashboard')
         .left.header.white.item Palm Beach State College | Lake Worth Library
         .right
           .ui.basic.blue.button#admin Admin
+          if isInRole 'admin'
+            .ui.basic.blue.button#users Edit Users
           .ui.basic.blue.button#log-out Log Out
 
       .ui.secondary.pointing.menu
@@ -67,6 +69,10 @@ template(name='Dashboard')
                   i.fa.fa-facebook-square#facebook
                   .ui.basic.blue.button.right.floated#view-bookshelf View Bookshelf
                   .ui.basic.blue.button.right.floated#download-bookshelf Download Bookshelf
+                  br
+                  br
+                  if isInRole 'admin'
+                    .ui.basic.teal.button.right.floated#admin-add-books Add New Books to Collection
 
       section.ui.segment#add-new-books
         p Submit List from FLVC Here:

@@ -39,6 +39,9 @@ Template.Dashboard.events
   "click #admin": () ->
     Modal.showModal 'Admin:', 'Admin'
 
+  "click #users": () ->
+    Modal.showModal 'Users:', 'Users'
+
   "click #prev": () ->
     Library.bookInfo(Library.paginate('prev'))
 
@@ -52,6 +55,9 @@ Template.Dashboard.events
 
   "click #your-account": () ->
     Modal.showModal 'Your Account:', 'Account'
+
+  "click #notifications": () ->
+    Modal.showModal 'Notifications:', 'Notifications'
 
   "click #help": () ->
     Modal.showModal 'Help:', 'Help'
@@ -77,6 +83,9 @@ Template.Dashboard.events
     oclcnum = $('#search-input').val()
     Library.search(oclcnum)
     $('#search-input').val(' ')
+
+  "click #admin-add-books": () ->
+    $('#add-new-books').show()
 
   "click #submit-sysnums": () ->
     sysnums = $('#sysnums-submissions').val().trim().split('\n')
