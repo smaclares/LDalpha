@@ -196,7 +196,6 @@
             Accounts.createUser {
             username: username
             password: password
-<<<<<<< HEAD
               },  (error) ->
             if error
               alert 'Account creation failed! Please, try again or contact an Admin.'
@@ -212,24 +211,7 @@
          alert 'User email must be from @palmbeachstate.edu. Please, try again.'
     else
         alert 'Invalid credentials. Please, try again!'
-=======
-            },  (error) ->
-              if error
-                alert 'Account creation failed! Please, try again or contact an Admin.'
-                Modal.clearRegisterModal()
-                return;
-              else
-                $('#main-modal').modal 'hide'
-                alert 'Account creation successful!'
-                Router.go '/dashboard'
-          else
-              alert 'Password must have more than seven characters.'
-       else
-          alert 'User email must be from @palmbeachstate.edu. Please, try again.'
-     else
-       alert 'Invalid credentials. Please, try again!'
->>>>>>> origin/master
-
+        
   registerPatron: () ->
 
       accessCode = $('[name="registration-code"]').val()

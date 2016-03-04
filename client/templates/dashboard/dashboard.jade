@@ -26,62 +26,7 @@ template(name='Dashboard')
         a.item Congressional Digests
         a.item Library Statistics
 
-      section.ui.segment#book-gallery
-          .ui.search#search
-            .ui.icon.input
-              input.prompt#search-input(placeholder='Search by OCLC' type='text')
-            i.search.icon#search-button
-            hr
-            .ui.items
-              .ui.item
-                .image
-                  img#bib-image(src='#{image}')
-                  img#google-img(src='https://magellan.bristolcathedral.org.uk/Magellan/Images/TileIcons/google-logo.png')
-                .content
-                  .bib-info
-                    p OCLC #: #{oclc}
-                    p Title: #{title}
-                    p Author: #{author}
-                    p Description:
-                      hr
-                      p #{misc1}
-                      p #{misc2}
-                      p #{misc3}
-                  .ui.basic.teal.button.right.floated#next
-                      i.fa.fa-chevron-right
-                  .ui.basic.teal.button.right.floated#prev
-                    i.fa.fa-chevron-left
-                  br
-                  br
-                  hr
-                  .container
-                    .ui.message#book-gallery-message
-                        i.close.icon#message-close
-                        .header#message-header
-                        p#message-text
-                  if isInRole 'admin'
-                    .ui.basic.red.button.right.floated#delete-book Delete Book From Collection
-                  .ui.basic.teal.button.right.floated#add-to-bookshelf + Add to Bookshelf
-                  br
-                  br
-                  hr
-                  i.fa.fa-twitter-square#twitter
-                  i.fa.fa-facebook-square#facebook
-                  .ui.basic.blue.button.right.floated#view-bookshelf View Bookshelf
-                  .ui.basic.blue.button.right.floated#download-bookshelf Download Bookshelf
-                  br
-                  br
-                  if isInRole 'admin'
-                    .ui.basic.teal.button.right.floated#admin-add-books Add New Books to Collection
-
-      section.ui.segment#add-new-books
-        p Submit List from FLVC Here:
-        hr
-        textarea(cols='45')#sysnums-submissions
-        br
-        br
-        .ui.basic.blue.button#submit-sysnums Submit
-        .ui.button#clear-sysnums Clear
+      +NewBooks
 
       footer
         a(href="http://www.palmbeachstate.edu/library/lake-worth-library/services-and-staff.aspx")#contact-us Contact Us
