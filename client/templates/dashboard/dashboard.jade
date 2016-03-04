@@ -1,7 +1,7 @@
 template(name='Dashboard')
 
       .ui.menu#dashboard-nav
-        .left.header.white.item Palm Beach State College | Lake Worth Library
+        a.left.header.white.item(href="http://www.palmbeachstate.edu/library/default.aspx") Palm Beach State College | Lake Worth Library
         .right
           .ui.basic.blue.button#admin Admin
           if isInRole 'admin'
@@ -19,11 +19,6 @@ template(name='Dashboard')
         span #{username}
         br
         i.fa.fa-envelope-o#notifications  2
-      .container
-        .ui.message#book-gallery-message
-            i.close.icon#message-close
-            .header#message-header
-            p#message-text
 
       .ui.vertical.menu#section-nav
         a.item.active.teal New Books
@@ -59,6 +54,11 @@ template(name='Dashboard')
                   br
                   br
                   hr
+                  .container
+                    .ui.message#book-gallery-message
+                        i.close.icon#message-close
+                        .header#message-header
+                        p#message-text
                   if isInRole 'admin'
                     .ui.basic.red.button.right.floated#delete-book Delete Book From Collection
                   .ui.basic.teal.button.right.floated#add-to-bookshelf + Add to Bookshelf
@@ -82,5 +82,8 @@ template(name='Dashboard')
         br
         .ui.basic.blue.button#submit-sysnums Submit
         .ui.button#clear-sysnums Clear
+
+      footer
+        a(href="http://www.palmbeachstate.edu/library/lake-worth-library/services-and-staff.aspx")#contact-us Contact Us
 
       +MainModal

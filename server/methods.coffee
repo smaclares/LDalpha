@@ -1,3 +1,10 @@
+checkForDuplicate = (num) ->
+  books = Books.find({})
+  books.forEach (book, index) ->
+    if num == book.oclc
+      return false
+  return true
+
 Meteor.methods
 
   'addAdminRole' : (user) ->
@@ -34,65 +41,36 @@ Meteor.methods
           flccrem = data.indexOf('ccla_aleph')
           data.splice flccrem, 5
 
-          oclc = sysnums[index]
-          title = data[0]
-          author = data[1]
-          extendedAuthor = data[2]
-          edition = data[3]
-          publisher = data[4]
-          year = data[5]
-          pages = data[6]
-          subjects = data[7]
-          description = data[8]
-          extendedDescription = data[9]
-
-          if checkForDuplicate(oclc)
+          if checkForDuplicate(sysnums[index])
             Books.insert
-              oclc: oclc
-              title: title
-              author: author
-              extauthor: extendedAuthor
-              edition: edition
-              publisher: publisher
-              year: year
-              pages: pages
-              subjects: subjects
-              description: description
-              extdescription: extendedDescription
+              oclc: sysnums[index]
+              title: data[0]
+              author: data[1]
+              extauthor: data[2]
+              edition: data[3]
+              publisher: data[4]
+              year: data[5]
+              pages: data[6]
+              subjects: data[7]
+              description: data[8]
+              extdescription: data[9]
 
          return
       return
     return
 
   'addToBookshelf': (data, userId) ->
-
-    oclc = data[0]
-    title = data[1]
-    author = data[2]
-    misc1 = data[5]
-    misc2 = data[6]
-    misc3 = data[7]
-    user_id = userId
-
-    if checkForDuplicate(oclc)
+    if checkForDuplicate(data[0])
       Bookshelf.insert
-        oclc: oclc
-        title: title
-        author: author
-        misc1: misc1
-        misc2: misc2
-        misc3: misc3
-        user_id: user_id
+        oclc: data[0]
+        title: data[1]
+        author: data[2]
+        misc1: data[5]
+        misc2: data[6]
+        misc3: data[7]
+        user_id: userId
     else
       return error
-
-  'checkForDuplicate': (num) ->
-    books = Books.find({})
-    books.forEach (book, index) ->
-      if num == book.oclc
-        return false
-    return true
-
 
   'deleteBook': (title, db) ->
     switch db
@@ -125,3 +103,10 @@ Meteor.methods
       $ = cheerio.load(result.content)
       imgsrc = $('.s-access-image.cfMarker').attr('src')
       return imgsrc
+
+  'sendEmail': (text) ->
+     Email.send
+      from: 'maclares@palmbeachstate.edu'
+      to: 'maclares@palmbeachstate.edu'
+      subject: 'Help Request'
+      text: text

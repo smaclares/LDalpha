@@ -26,6 +26,11 @@
       if error
         alert 'Could not delete account! Please, try again.'
 
+  helpRequest: (text) ->
+    Meteor.call 'sendEmail', text (error) ->
+      if error
+        alert 'Could not send help request! Please, try again.'
+
 }
 
 @Admin = {
@@ -186,46 +191,26 @@
   createPatron: (username, password) ->
 
     if username && password
-
-      # if username.includes('@palmbeachstate.edu')
-      #   if password.length >= 7
-      #       Accounts.createUser {
-    #         username: username
-    #         password: password
-    #       },  (error) ->
-    #         if error
-    #           alert 'Account creation failed! Please, try again or contact an Admin.'
-    #           Modal.clearRegisterModal()
-    #         return;
-    #       else
-    #         $('#main-modal').modal 'hide'
-    #         alert 'Account creation successful!'
-    #         Router.go '/dashboard'
-      #  else
-      #    alert 'Password must have more than seven characters.'
-      #
-      # else
-      #   alert 'User email must be from @palmbeachstate.edu. Please, try again.'
-  # else
-    # alert 'Invalid credentials. Please, try again!'
-
-        Accounts.createUser {
-          username: username
-          password: password
-        },  (error) ->
-          if error
-            alert 'Account creation failed! Please, try again or contact an Admin.'
-            Modal.clearRegisterModal()
-            return;
-          else
-            $('#main-modal').modal 'hide'
-            alert 'Account creation successful!'
-            Router.go '/dashboard'
-
+      if username.includes('@palmbeachstate.edu')
+        if password.length >= 7
+            Accounts.createUser {
+            username: username
+            password: password
+              },  (error) ->
+            if error
+              alert 'Account creation failed! Please, try again or contact an Admin.'
+              Modal.clearRegisterModal()
+              return;
+            else
+              $('#main-modal').modal 'hide'
+              alert 'Account creation successful!'
+              Router.go '/dashboard'
+         else
+           alert 'Password must have more than seven characters.'
+       else
+         alert 'User email must be from @palmbeachstate.edu. Please, try again.'
     else
-      alert 'Invalid credentials. Please, try again.'
-      Modal.clearRegisterModal()
-      return;
+        alert 'Invalid credentials. Please, try again!'
 
   registerPatron: () ->
 

@@ -36,6 +36,13 @@ Template.Admin.events
     "click #log-in-as-admin": () ->
       Admin.logInAdmin()
 
+Template.Help.events
+
+  "click #send-help-request": () ->
+    message = $('#help-request').val()
+    Account.helpRequest(message)
+    $('#help-request').val('')
+
 Template.Users.helpers
 
   "users": () ->
