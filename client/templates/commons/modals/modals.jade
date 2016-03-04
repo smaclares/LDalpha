@@ -7,6 +7,9 @@ template(name='MainModal')
         hr
         .content
           +Template.dynamic template=modalTemplate
+        br
+        .message-content
+          .ui.message#modal-message
 
 template(name='Admin')
   p If you have Adminstrative privileges, please input your credentials below.
@@ -38,7 +41,7 @@ template(name='Bookshelf')
       .thumbnail#book-info
         li= oclc
         br
-        li= title
+        li#title= title
         br
         li= author
         br

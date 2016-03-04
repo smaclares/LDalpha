@@ -8,28 +8,28 @@
 
         if newUsername
           Meteor.user().username = newUsername
-          alert 'Change successful! You new username is: ' + newUsername
+          Message.displayMessage('Your username has been changed.', 'positive', 'modal')
         else
-          alert 'Invalid input! Please, try again.'
+          Message.displayMessage('Could not change username! Please, try again.', 'negative', 'modal')
 
       when 'password'
         newPassword = prompt('Please, enter your new password: ')
 
         if newPassword
           Meteor.user().password = newPassword
-          alert 'Change successful! You new password is: ' + newPassword
+          Message.displayMessage('Your password has been changed.', 'positive', 'modal')
         else
-          alert 'Invalid input! Please, try again.'
+          Message.displayMessage('Invalid input! Please, try again.', 'negative', 'modal')
 
   deleteAccount: (user) ->
     Meteor.call 'deleteUser', user, (error) ->
       if error
-        alert 'Could not delete account! Please, try again.'
+        Message.displayMessage('Could not delete account! Please, try again.', 'negative', 'modal')
 
   helpRequest: (text) ->
     Meteor.call 'sendEmail', text (error) ->
       if error
-        alert 'Could not send help request! Please, try again.'
+        Message.displayMessage('Could not send help request! Please, try again.', 'negative', 'modal')
 
 }
 
@@ -44,14 +44,14 @@
       if username == 'admin' && password == 'admin'
         Meteor.call 'addAdminRole', Meteor.userId(), (error) ->
           if error
-            alert 'Could not log in as admin!'
+            Message.displayMessage('Could not log in as admin!', 'negative', 'modal')
           else
             alert 'You are now logged in as an admin.'
-        $('#main-modal').modal 'hide'
+            $('#main-modal').modal 'hide'
       else
-        alert 'Credentials not valid. Please, try again.'
+        Message.displayMessage('Credentials not valid. Please, try again.', 'negative', 'modal')
     else
-      alert 'Username or password were invalid. Please, try again.'
+      Message.displayMessage('Username or password were invalid. Please, try again.', 'negative', 'modal')
 }
 
 
@@ -69,6 +69,10 @@
         $('.message').show().addClass('positive')
         $('#message-header').text('Success!')
         $('#message-text').text(title + ' was added to your bookshelf.')
+
+  deleteBookFromBookshelf: (title) ->
+    Meteor.call 'deleteBook', title, 'Bookshelf', (error) ->
+      Message.displayMessage('Could not delete from bookshelf!', 'negative', 'modal')
 
   getBookshelfText: () ->
     return Bookshelf.find({}).fetch()
@@ -187,6 +191,13 @@
     $('#main-modal').modal 'show'
 }
 
+@Message = {
+  displayMessage: (text, status, template) ->
+    switch template
+      when 'modal'
+        $('#modal-message').show().addClass(status).text(text)
+}
+
 @Patron = {
   createPatron: (username, password) ->
 
@@ -196,22 +207,25 @@
             Accounts.createUser {
             username: username
             password: password
-              },  (error) ->
-            if error
-              alert 'Account creation failed! Please, try again or contact an Admin.'
-              Modal.clearRegisterModal()
-              return;
-            else
-              $('#main-modal').modal 'hide'
-              alert 'Account creation successful!'
-              Router.go '/dashboard'
-         else
-           alert 'Password must have more than seven characters.'
+              }, (error) ->
+                if error
+                  Message.displayMessage('Account creation failed! Please, try again or contact an Admin.', 'negative', 'modal')
+                  Modal.clearRegisterModal()
+                  return;
+                else
+                  $('#main-modal').modal 'hide'
+                  alert 'Account creation successful!'
+                  Router.go '/dashboard'
+          else
+            Message.displayMessage('Password must have more than seven characters.', 'negative', 'modal')
+            Modal.clearRegisterModal()
        else
-         alert 'User email must be from @palmbeachstate.edu. Please, try again.'
+         Message.displayMessage('User email must be from @palmbeachstate.edu. Please, try again.', 'negative', 'modal')
+         Modal.clearRegisterModal()
     else
-        alert 'Invalid credentials. Please, try again!'
-        
+        Message.displayMessage('Invalid credentials. Please, try again!', 'negative', 'modal')
+        Modal.clearRegisterModal()
+
   registerPatron: () ->
 
       accessCode = $('[name="registration-code"]').val()
@@ -223,6 +237,5 @@
         Patron.createPatron(username, password)
 
       else
-          alert 'Invalid access code. Please, try again.'
-          clearModal()
+          displayMessage('Invalid access code. Please, try again.', 'negative', 'modal')
 }

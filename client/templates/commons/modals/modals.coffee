@@ -6,9 +6,14 @@ Template.MainModal.helpers
   "modalTitle": () ->
     return Session.get('modalTitle')
 
- Template.Bookshelf.helpers
+Template.Bookshelf.helpers
    'bookinfo': () ->
      return Bookshelf.find({})
+
+Template.Bookshelf.events
+    'click #delete-from-bookshelf': () ->
+      title = $('#book-info').find('#title').text()
+      LibraryBookshelf.deleteBookFromBookshelf(title)
 
 Template.Register.events
 
