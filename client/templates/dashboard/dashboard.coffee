@@ -1,6 +1,7 @@
 Template.Dashboard.onCreated ->
   @subscribe 'books'
   @subscribe 'bookshelf'
+  @subscribe 'directory'
 
 Template.Dashboard.onRendered ->
 

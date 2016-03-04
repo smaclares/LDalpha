@@ -73,3 +73,9 @@ template(name='Register')
 
 template(name='Users')
   .users-content
+    ul
+      each users
+        .user-content
+          li#username= username
+          br
+          .ui.basic.red.button#delete-user Delete User?

@@ -26,8 +26,24 @@ Template.Account.events
   "click #change-password": () ->
     Account.changeUserInfo('password')
 
+  "click #delete-account": () ->
+    user = Meteor.userId()
+    Account.deleteAccount(user)
+
 
 Template.Admin.events
 
     "click #log-in-as-admin": () ->
       Admin.logInAdmin()
+
+Template.Users.helpers
+
+  "users": () ->
+    return Meteor.users.find({})
+
+Template.Users.events
+
+  "click #delete-user": (event) ->
+    username = $('.user-content').find('#username').text()
+    userid = Meteor.users.findOne({username:username})._id
+    Account.deleteAccount(userid)

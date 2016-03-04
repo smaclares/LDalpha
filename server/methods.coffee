@@ -46,20 +46,21 @@ Meteor.methods
           description = data[8]
           extendedDescription = data[9]
 
+          if checkForDuplicate(oclc)
+            Books.insert
+              oclc: oclc
+              title: title
+              author: author
+              extauthor: extendedAuthor
+              edition: edition
+              publisher: publisher
+              year: year
+              pages: pages
+              subjects: subjects
+              description: description
+              extdescription: extendedDescription
 
-          Books.insert
-            oclc: oclc
-            title: title
-            author: author
-            extauthor: extendedAuthor
-            edition: edition
-            publisher: publisher
-            year: year
-            pages: pages
-            subjects: subjects
-            description: description
-            extdescription: extendedDescription
-        return
+         return
       return
     return
 
@@ -73,14 +74,24 @@ Meteor.methods
     misc3 = data[7]
     user_id = userId
 
-    Bookshelf.insert
-      oclc: oclc
-      title: title
-      author: author
-      misc1: misc1
-      misc2: misc2
-      misc3: misc3
-      user_id: user_id
+    if checkForDuplicate(oclc)
+      Bookshelf.insert
+        oclc: oclc
+        title: title
+        author: author
+        misc1: misc1
+        misc2: misc2
+        misc3: misc3
+        user_id: user_id
+    else
+      return error
+
+  'checkForDuplicate': (num) ->
+    books = Books.find({})
+    books.forEach (book, index) ->
+      if num == book.oclc
+        return false
+    return true
 
 
   'deleteBook': (title, db) ->

@@ -21,11 +21,11 @@
         else
           alert 'Invalid input! Please, try again.'
 
-  deleteAccount: () ->
-    Meteor.call 'deleteUser', Meteor.userId(), (error) ->
+  deleteAccount: (user) ->
+    Meteor.call 'deleteUser', user, (error) ->
       if error
         alert 'Could not delete account! Please, try again.'
-        
+
 }
 
 @Admin = {
